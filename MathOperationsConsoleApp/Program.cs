@@ -23,15 +23,45 @@ public class Program
                 case "1":
                     Console.WriteLine("Please solve the 5 following problems.");
                     //use math.random to select two random ints then compare if it matches what the user selects if it does increment the win var
-                    for(int i = 0; i <= 5; i++)
+                    //loop to ask 5 questions
+                    for(int i = 1; i <= 5; i++)
                     {
-                        RandomNumbers.GenerateTwoRands(0, 7);
+                        //score keeping var for the user 
+                        int correctAnswers = 0;
 
-                        Console.WriteLine($"What is {}");
+                        //should generate two different numbers everytime
+                        RandomNumbers.GenerateTwoRands(1, 100);
+
+                        Console.WriteLine("What is the sum of the following numbers?");
+                        Console.WriteLine($"{RandomNumbers.RandomNumber1} + {RandomNumbers.RandomNumber2}");
+
+                        int userAnswer;
+                        if (int.TryParse(Console.ReadLine(), out userAnswer))
+                         {
+
+
+                            int correctSum = RandomNumbers.RandomNumber1 + RandomNumbers.RandomNumber2;
+                            if (userAnswer == correctSum)
+                            {
+                                Console.WriteLine("That was correct!");
+                                correctAnswers++;
+                                Console.WriteLine("--------------------");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"That was incorrect, the answer was {correctSum}");
+                                Console.WriteLine("--------------------");
+
+                            }
+                        }
+                       
+                        //for readability
+                        Console.WriteLine();
+                        
                     }
 
-
-                    break;
+                break;
+                    
 
 
 
@@ -76,7 +106,6 @@ public class Program
             Console.WriteLine("----------------");
             foreach (int x in results)
             {
-                Console.WriteLine($"The answers to each of the operations were {x}");
                 Console.WriteLine();
                 Console.WriteLine($"Congratulations! You answered {answersCorrect} correct.");
             }

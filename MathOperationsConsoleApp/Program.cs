@@ -6,7 +6,7 @@ public class Program
     static void Main(string[] args)
     {
         List<double> results = new List<double>();
-
+        Console.WriteLine("Welcome to Math Roulette, you will be asked to select a math operation to practice then will be prompted 5 questions to test your ability");
         Console.WriteLine("Please enter a digit for the desired operaton.");
         Console.WriteLine("--------------");
         Console.WriteLine("1.Addition");
@@ -15,19 +15,26 @@ public class Program
         Console.WriteLine("4.Division");
         Console.WriteLine("--------------");
         var ans = Console.ReadLine();
+        var answersCorrect = 0;
         while (true)
         {
             switch (ans)
             {
                 case "1":
+                    Console.WriteLine("Please solve the 5 following problems.");
+                    //use math.random to select two random ints then compare if it matches what the user selects if it does increment the win var
+                    for(int i = 0; i <= 5; i++)
+                    {
+                        RandomNumbers.GenerateTwoRands(0, 7);
 
-                    Console.WriteLine("Enter in two integers to add.");
-                    var a = Int32.Parse(Console.ReadLine());
-                    var b = Int32.Parse(Console.ReadLine());
-                    var sum = Operations.Add(a, b);
-                    Console.WriteLine($"The answer to that is {sum}");
-                    results.Add(sum);
+                        Console.WriteLine($"What is {}");
+                    }
+
+
                     break;
+
+
+
 
 
                 case "2":
@@ -71,6 +78,7 @@ public class Program
             {
                 Console.WriteLine($"The answers to each of the operations were {x}");
                 Console.WriteLine();
+                Console.WriteLine($"Congratulations! You answered {answersCorrect} correct.");
             }
 
         }
